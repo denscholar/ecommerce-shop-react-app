@@ -1,9 +1,10 @@
 import React from 'react'
 import './MenuItem.css';
+import { withRouter } from 'react-router-dom'; //Higher Order Component. A function that takes a component as an argument and returns a modified component.
 
-const MenuItem = ({ title, imageUrl, size }) => {
+const MenuItem = ({ title, imageUrl, size, history, linkUrl, match }) => {
     return(
-    <div
+    <div onClick={() => history.push(`${match.url}${linkUrl}`)}
         className={`${size} menu-item`}>
         <div className='backgroundImage'
             style={{
@@ -18,4 +19,4 @@ const MenuItem = ({ title, imageUrl, size }) => {
     )
 }
 
-export default MenuItem
+export default withRouter(MenuItem)
